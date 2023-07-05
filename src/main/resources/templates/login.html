@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Page</title>
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<!-- Custom CSS -->
+<style>
+body {
+	background-color: #f8f9fa;
+}
+
+.login-form {
+	width: 300px;
+	margin: 0 auto;
+	margin-top: 100px;
+	background-color: #fff;
+	padding: 20px;
+	border-radius: 5px;
+	box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+}
+
+.login-form h2 {
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.login-form input[type="text"], .login-form input[type="password"] {
+	width: 100%;
+	padding: 12px;
+	margin-bottom: 10px;
+	border: 1px solid #ced4da;
+	border-radius: 3px;
+}
+
+.login-form button[type="submit"] {
+	width: 100%;
+	padding: 10px;
+	background-color: #007bff;
+	color: #fff;
+	border: none;
+	border-radius: 3px;
+}
+
+.login-form button[type="submit"]:hover {
+	background-color: #0069d9;
+}
+
+.navbar {
+	background-color: #e9ecef;
+	padding: 10px;
+}
+
+.navbar-brand {
+	font-size: 24px;
+	font-weight: bold;
+}
+
+.navbar-nav .nav-link {
+	font-size: 18px;
+	margin-left: 10px;
+}
+
+.nav-item:hover .nav-link {
+	color: #007bff;
+}
+</style>
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-md navbar-light">
+		<div class="container">
+			<a class="navbar-brand" href="#">WELCOME PARTICIPANT</a>
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item"><a class="nav-link" th:href="@{/}">HOME</a></li>
+				<li class="nav-item"><a class="nav-link" th:href="@{/signup}">Sign
+						Up</a></li>
+				<li class="nav-item"><a class="nav-link" th:href="@{/signin}">Login</a></li>
+			</ul>
+		</div>
+	</nav>
+	<div class="container">
+		<div class="login-form">
+			<form id="login-form" class="form" th:action="@{/dologin}"
+				method="post">
+				<h2>Login</h2>
+				<div th:if="${param.error}" class="alert alert-danger">
+					Invalid username or password</div>
+				<div th:if="${param.logout}" class="alert alert-success">You
+					have been logged out</div>
+				<div th:if="${param.change}" class="alert alert-success">
+					<p th:text="${param.change}"></p>
+				</div>
+				<input type="text" name="username" id="username"
+					placeholder="Username"> <input type="password"
+					name="password" id="password" placeholder="Password">
+				<button type="submit">Login</button>
+			</form>
+		</div>
+	</div>
+
+	<!-- Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

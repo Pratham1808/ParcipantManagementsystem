@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Participant Management System - Sign Up</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<style>
+/* Custom CSS */
+body {
+	background-color: #f8f9fa;
+}
+
+#m {
+	max-width: 500px;
+	margin-top: 40px;
+	border: 1px solid #ced4da;
+	border-radius: 5px;
+	padding: 30px;
+	background-color: #ffffff;
+}
+
+h1 {
+	font-size: 28px;
+	font-weight: bold;
+	margin-bottom: 30px;
+}
+
+label {
+	font-weight: bold;
+	display: inline-block;
+	width: 100px;
+	text-align: left;
+}
+
+input[type="text"], input[type="email"], input[type="password"] {
+	margin-bottom: 20px;
+	border: 1px solid #ced4da;
+	border-radius: 3px;
+	padding: 10px;
+	width: calc(100% - 120px);
+	display: inline-block;
+}
+
+button[type="submit"] {
+	width: 100%;
+	font-weight: bold;
+}
+
+.navbar {
+	background-color: #e9ecef;
+	padding: 10px;
+}
+
+.navbar-brand {
+	font-size: 24px;
+	font-weight: bold;
+}
+
+.navbar-nav .nav-link {
+	font-size: 18px;
+	margin-left: 10px;
+}
+
+.nav-item:hover .nav-link {
+	color: #007bff;
+}
+</style>
+</head>
+<body>
+	<nav class="navbar navbar-expand-md navbar-light">
+		<div class="container">
+			<a class="navbar-brand" href="#">WELCOME PARTICIPANT</a>
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item"><a class="nav-link" th:href="@{/}">HOME</a></li>
+				<li class="nav-item"><a class="nav-link" th:href="@{/signup}">Sign
+						Up</a></li>
+				<li class="nav-item"><a class="nav-link" th:href="@{/signin}">Login</a></li>
+			</ul>
+		</div>
+	</nav>
+	<div class="container" id="m">
+		<div class="my-card">
+			<div th:if="${session.message}"
+				th:classappend="${session.message.type}" class="alert" role="alert">
+				<p class="text-center" th:text="${session.message.content}"></p>
+				<th:block th:text="${#session.removeAttribute('message')}"></th:block>
+			</div>
+			<h1>Sign Up</h1>
+			<form th:action="@{/process_signup}" method="post">
+				<div class="form-group">
+					<label for="name">Name</label> <input required name="name"
+						type="text" class="form-control" id="name"
+						placeholder="Enter your name">
+				</div>
+				<div class="form-group">
+					<label for="email">Email</label> <input required name="email"
+						type="email" class="form-control" id="email"
+						placeholder="Enter your email">
+				</div>
+				<div class="form-group">
+					<label for="college">College Name</label> <input required
+						name="collegeName" type="text" class="form-control" id="college"
+						placeholder="Enter your college name">
+				</div>
+				<div class="form-group">
+					<label for="password">Password</label> <input required
+						name="password" type="password" class="form-control" id="password"
+						placeholder="Enter a password">
+				</div>
+				<button type="submit" class="btn btn-primary">Sign Up</button>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

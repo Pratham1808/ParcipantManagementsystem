@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Participant Management System</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<style>
+/* Custom CSS */
+body {
+	padding-top: 40px;
+	text-align: center;
+}
+
+.jumbotron {
+	background-color: #f8f9fa;
+}
+
+.navbar {
+	background-color: #e9ecef;
+	padding: 10px;
+}
+
+.navbar-brand {
+	font-size: 24px;
+	font-weight: bold;
+}
+
+.navbar-nav .nav-link {
+	font-size: 18px;
+	margin-left: 10px;
+}
+
+.container {
+	margin-top: 40px;
+}
+
+.lead {
+	font-size: 22px;
+	font-weight: bold;
+}
+
+p {
+	font-size: 18px;
+}
+/* Added CSS for hover effects and extra styling */
+.nav-item:hover .nav-link {
+	color: #007bff;
+}
+
+.jumbotron:hover {
+	transform: scale(1.02);
+	transition: transform 0.3s ease-in-out;
+}
+
+.container mt-4:hover {
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+</style>
+</head>
+<body>
+	<nav class="navbar navbar-expand-md navbar-light">
+		<div class="container">
+			<a class="navbar-brand" href="#">WELCOME PARTICIPANT</a>
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item"><a class="nav-link" th:href="@{/}">HOME</a></li>
+				<li class="nav-item"><a class="nav-link" th:href="@{/signup}">Sign Up</a></li>
+				<li class="nav-item"><a class="nav-link" th:href="@{/signin}">Login</a></li>
+			</ul>
+		</div>
+	</nav>
+	<div class="container">
+		<div class="jumbotron">
+			<h1 class="display-4">Participant Management System</h1>
+			<p class="lead">Welcome to our platform for managing
+				participants!</p>
+		</div>
+
+	</div>
+</body>
+</html>

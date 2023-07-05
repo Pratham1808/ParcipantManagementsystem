@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8" />
+<title>This is Home Page</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<style>
+.navbar {
+	background-color: #e9ecef;
+	padding: 10px;
+}
+
+.navbar-brand {
+	font-size: 24px;
+	font-weight: bold;
+}
+
+.navbar-nav .nav-link {
+	font-size: 18px;
+	margin-left: 10px;
+}
+
+.nav-item:hover .nav-link {
+	color: #007bff;
+}
+
+body {
+	background-color: #f8f9fa;
+}
+
+body {
+	padding-top: 40px;
+	text-align: center;
+}
+</style>
+</head>
+<body>
+
+
+	<nav class="navbar navbar-expand-md navbar-light">
+		<div class="container">
+			<a class="navbar-brand" href="#">WELCOME PARTICIPANT</a>
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item"><a class="nav-link" th:href="@{/}">HOME</a></li>
+				<li class="nav-item"><a class="nav-link" th:href="@{/logout}">LOGOUT</a></li>
+			</ul>
+		</div>
+	</nav>
+
+
+	<section>
+		<div class="card" th:if=${participant}>
+			<div class="card-body">
+				<div th:if="${session.message}"
+					th:classappend="${session.message.type}" class="alert" role="alert">
+					<p class="text-center" th:text="${session.message.content}"></p>
+					<th:block th:text="${#session.removeAttribute('message')}"></th:block>
+				</div>
+				<div class="container text-center">
+					<div class=table-responsive>
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th scope="col">Id</th>
+									<th scope="col">PSM2023<span th:text="${participant.id}"></span></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<th scope="row">Name</th>
+									<td><span th:text="${participant.name}"></span></td>
+								</tr>
+								<tr>
+									<th scope="row">Email</th>
+									<td><span th:text="${participant.email}"></span></td>
+								</tr>
+								<tr>
+									<th scope="row">TheoryMarks1</th>
+									<td><span th:text="${participant.theoryMarks1}"></span></td>
+								</tr>
+								<tr>
+									<th scope="row">ThoeryMarks2</th>
+									<td><span th:text="${participant.theoryMarks2}"></span></td>
+								</tr>
+								<tr>
+									<th scope="row">PracticalMarks1</th>
+									<td><span th:text="${participant.practicalMarks1}"></span></td>
+								</tr>
+								<tr>
+									<th scope="row">PracticalMarks2</th>
+									<td><span th:text="${participant.practicalMarks2}"></span></td>
+								</tr>
+								<tr>
+									<th scope="row">Total</th>
+									<td><span th:text="${participant.total}"></span></td>
+								</tr>
+								<tr>
+									<th scope="row">Result</th>
+									<td><span th:text="${participant.result}"></span></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>
